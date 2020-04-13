@@ -2,8 +2,11 @@
 
 let
 
+  niv = pkgs.callPackage ./tools/niv.nix {};
+
   packages =
     [
+      niv
       pkgs.bat
       pkgs.cachix
       pkgs.direnv
