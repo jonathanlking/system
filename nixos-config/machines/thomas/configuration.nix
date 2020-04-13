@@ -14,12 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "thomas";
   networking.hostId = "dbefc8c9";
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  services.openssh.permitRootLogin = "yes";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -88,10 +86,10 @@
   # services.xserver.desktopManager.gnome3.enable = true;
   # services.xserver.displayManager.gdm.wayland = false;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jonathan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "password";
   };
 
   # This value determines the NixOS release with which your system is to be
