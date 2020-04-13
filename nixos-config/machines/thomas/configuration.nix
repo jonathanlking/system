@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+
+  packages = pkgs.callPackage ../../packages {};
+
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -40,11 +46,7 @@
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget vim git
-  ];
+  environment.systemPackages = packages;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
