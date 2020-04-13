@@ -56,6 +56,12 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.zfs = {
+    autoSnapshot.enable = true;
+    autoScrub.enable = true;
+    trim.enable = true;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
