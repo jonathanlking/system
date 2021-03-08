@@ -29,7 +29,7 @@ in {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    fileWidgetCommand = "fd --type f";
+    defaultCommand = "fd --type f";
   };
 
   programs.zsh = {
