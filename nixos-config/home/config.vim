@@ -103,3 +103,25 @@ nnoremap <leader>b :Buffers<CR>
 
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 nnoremap <C-F> :Ggr <cword><CR>
+
+" Show a live preview of substitution commands
+set inccommand=nosplit
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>F <Plug>(coc-format)
+
+let g:ormolu_ghc_opt=["-XTypeApplications", "-XRankNTypes", "-XDerivingVia"]
+nnoremap <C-l> :Neoformat <CR>

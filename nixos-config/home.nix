@@ -55,6 +55,9 @@ in {
     cachix # Nix build cache
     fd # find replacement written in Rust
     jq # JSON parsing for the CLI
+    lorri # Easy Nix shell
     ripgrep # grep replacement written in Rust
+    niv
+    ormolu
   ];
 }
