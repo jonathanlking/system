@@ -28,6 +28,9 @@
       vim-highlightedyank # highlight what has just been yanked
       neoformat # code formatting (i.e. ormolu)
       purescript-vim # PureScript syntax highlighting
+      vim-javascript
+      typescript-vim
+      vim-jsx-typescript # Typescript TSX formatting
     ];
   };
 
