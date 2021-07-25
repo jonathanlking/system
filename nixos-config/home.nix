@@ -6,6 +6,13 @@ let
   ];
 
 in {
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   inherit imports;
 
   # Let Home Manager install and manage itself.
