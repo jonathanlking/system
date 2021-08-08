@@ -66,5 +66,7 @@ in {
     ripgrep # grep replacement written in Rust
     niv
     ormolu
+    rnix-lsp
+    sumneko-lua-language-server
   ];
 }
