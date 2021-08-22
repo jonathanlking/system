@@ -117,6 +117,7 @@ lspconfig.hls.setup {
     capabilities = capabilities,
     root_dir = lspconfig.util.root_pattern('BUILD.bazel', '*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml'),
     filetypes = { 'hs', 'lhs', 'haskell', 'lhaskell' },
+    formattingProvider = "ormolu",
     settings = {
         languageServerHaskell = {
             hlintOn = false,

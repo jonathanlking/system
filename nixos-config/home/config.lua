@@ -19,10 +19,12 @@ opt.inccommand = "nosplit"
 
 local map = vim.api.nvim_set_keymap
 local options = { noremap = true }
-map('n', '<C-p>', ':Telescope git_files <CR>', options)
+map('n', '<C-p>', ':Telescope find_files <CR>', options)
+map('n', '<C-l>', ':Telescope git_files <CR>', options)
 map('n', '<C-f>', ':Telescope live_grep <CR>', options)
 map('n', '<Leader>b', ':Telescope buffers <CR>', options)
 map('n', '<Leader>c', '/^[<|=>]\\{7\\}\\%( .*\\)\\?$<CR>', options)
+map('n', 'ff', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
 
 vim.cmd [[
   set tags+=$MONOREPO/tags;
@@ -30,6 +32,13 @@ vim.cmd [[
 
 
 vim.cmd [[
+
+" Use 2 spaces to indent
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+
 " Incremental search
 set incsearch
 
