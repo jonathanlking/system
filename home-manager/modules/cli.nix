@@ -56,4 +56,14 @@
     enableZshIntegration = false;
     # enableNixDirenvIntegration = true;
   };
+
+  programs.tmux = {
+    enable = true;
+    escapeTime = 0;
+    baseIndex = 1;
+    keyMode = "vi";
+    shortcut = "Space";
+    extraConfig = builtins.readFile ../configs/tmux/tmux.conf;
+  };
+
 }
