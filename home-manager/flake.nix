@@ -1,50 +1,44 @@
 {
-  description = "Example home-manager from non-nixos system";
+  description = "Home-manager from non-nixos system";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-  # inputs.nixpkgs.url = "path:/home/michael/Repositories/nix/nixpkgs";
-  # inputs.nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs = {
+      # Pin our primary nixpkgs repository. This is the main nixpkgs repository
+      # we'll use for our configurations. Be very careful changing this because
+      # it'll impact your entire system.
+      nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+  
+      home-manager = {
+        url = "github:nix-community/home-manager/release-21.11";
+  
+        # We want home-manager to use the same set of nixpkgs as our system.
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+  
+      # We have access to unstable nixpkgs if we want specific unstable packages.
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+  
+      # Other packages
+      neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-  inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+      flake-utils.url = "github:numtide/flake-utils";
 
-  inputs.home-manager = {
-    url = "github:nix-community/home-manager";
-    # url = "path:/Users/michael/Repositories/nix/home-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+      telescope-fzf-native = {
+          url = "github:nvim-telescope/telescope-fzf-native.nvim";
+          flake = false;
+        };
 
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-
-  inputs.telescope-fzf-native = {
-    url = "github:nvim-telescope/telescope-fzf-native.nvim";
-    flake = false;
-  };
-
-  inputs.LS_COLORS = {
-    url = "github:trapd00r/LS_COLORS";
-    flake = false;
-  };
+      LS_COLORS = {
+        url = "github:trapd00r/LS_COLORS";
+        flake = false;
+      };
+    };
 
   outputs = { self, ... }@inputs:
     let
-      # nixos-unstable-overlay = final: prev: {
-      #   nixos-unstable = import inputs.nixos-unstable {
-      #     system = prev.system;
-      #     # config.allowUnfree = true;
-      #     overlays = [ ];
-      #   };
-      # };
       overlays = [
         # nixos-unstable-overlay
         (self: super: {
           telescope-fzf-native = super.callPackage ./packages/telescope-fzf-native.nix {src = inputs.telescope-fzf-native;};
-        })
-        (self: super: {
-          opencv4 = super.opencv4.override { enableUnfree = false; enableCuda = false; };
-          blender = super.blender.override { cudaSupport = false; };
-        })
-        (self: super: {
-          zsh-powerlevel10k = super.callPackage ./packages/powerlevel10k.nix {};
         })
         (import ./packages/sumneko_mac.nix)
         inputs.neovim-nightly-overlay.overlay
@@ -62,7 +56,6 @@
         macbook-pro = inputs.home-manager.lib.homeManagerConfiguration {
           configuration = { pkgs, config, ... }:
             {
-              xdg.configFile."nix/nix.conf".source = ./configs/nix/nix.conf;
               nixpkgs.config = import ./configs/nix/config.nix;
               nixpkgs.overlays = overlays;
               imports = [
