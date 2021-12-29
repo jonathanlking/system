@@ -42,8 +42,8 @@
   required = true
 
 [user]
-  name = Michael Lingelbach
-  email = m.j.lbach@gmail.com
+  name = Jonathan King
+  email = jonathanlking@me.com
 
 [http] 
   postBuffer = 524288000
