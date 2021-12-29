@@ -71,6 +71,7 @@
           system = "aarch64-darwin";
           homeDirectory = "/Users/jonathan";
           username = "jonathan";
+          stateVersion = "21.11"; 
         };
       };
       macbook-pro = self.homeConfigurations.macbook-pro.activationPackage;
