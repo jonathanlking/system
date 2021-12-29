@@ -7,15 +7,6 @@
 
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-  inputs.emacs-overlay = {
-    type = "github";
-    owner = "mjlbach";
-    repo = "emacs-overlay";
-    # rev = "d62b49ac651e314080e333a7e1f190877675ee99";
-    # url = "path:/Users/michae/Repositories/emacs-overlay";
-    ref = "feature/flakes";
-  };
-
   inputs.home-manager = {
     url = "github:nix-community/home-manager";
     # url = "path:/Users/michael/Repositories/nix/home-manager";
@@ -40,7 +31,7 @@
       #   nixos-unstable = import inputs.nixos-unstable {
       #     system = prev.system;
       #     # config.allowUnfree = true;
-      #     overlays = [ inputs.emacs-overlay.overlay ];
+      #     overlays = [ ];
       #   };
       # };
       overlays = [
@@ -56,7 +47,6 @@
           zsh-powerlevel10k = super.callPackage ./packages/powerlevel10k.nix {};
         })
         (import ./packages/sumneko_mac.nix)
-        inputs.emacs-overlay.overlay
         inputs.neovim-nightly-overlay.overlay
         (final: prev: { LS_COLORS = inputs.LS_COLORS; })
       ];
@@ -77,7 +67,6 @@
               nixpkgs.overlays = overlays;
               imports = [
                 ./modules/cli.nix
-                # ./modules/emacs.nix
                 ./modules/home-manager.nix
                 ./modules/neovim.nix
                 ./modules/git.nix
