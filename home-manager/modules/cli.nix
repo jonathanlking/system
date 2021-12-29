@@ -11,6 +11,7 @@
     gnused
     gnutls
     jq # JSON parsing for the CLI
+    keychain
     lorri # Easy Nix shell
     nix-zsh-completions
     nmap
