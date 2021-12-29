@@ -15,9 +15,7 @@
     lorri # Easy Nix shell
     nix-zsh-completions
     nmap
-    # ormolu # Haskell code prettier 
     ripgrep # grep replacement written in Rust
-    rnix-lsp # Language server for Nix
     tealdeer
     tmux
     tree

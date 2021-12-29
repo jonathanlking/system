@@ -64,6 +64,7 @@
                 ./modules/home-manager.nix
                 ./modules/neovim.nix
                 ./modules/git.nix
+                ./modules/languages.nix
                 ./modules/nix-utilities.nix
               ];
               programs.zsh.initExtra = builtins.readFile ./configs/zsh/macbook-pro_zshrc.zsh;
