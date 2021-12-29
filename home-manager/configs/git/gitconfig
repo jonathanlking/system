@@ -35,18 +35,9 @@
 [interactive]
   diffFilter = delta --color-only
 
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-
 [user]
   name = Jonathan King
   email = jonathanlking@me.com
-
-[http] 
-  postBuffer = 524288000
 
 [init]
   defaultBranch = main
