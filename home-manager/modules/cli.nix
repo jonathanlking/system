@@ -15,6 +15,7 @@
     lorri # Easy Nix shell
     nix-zsh-completions
     nmap
+    pre-commit
     ripgrep # grep replacement written in Rust
     tealdeer
     tmux
