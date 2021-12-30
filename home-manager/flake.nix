@@ -22,11 +22,6 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    telescope-fzf-native = {
-      url = "github:nvim-telescope/telescope-fzf-native.nvim";
-      flake = false;
-    };
-
     LS_COLORS = {
       url = "github:trapd00r/LS_COLORS";
       flake = false;
@@ -36,10 +31,6 @@
   outputs = { self, ... }@inputs:
     let
       overlays = [
-        # nixos-unstable-overlay
-        (self: super: {
-          telescope-fzf-native = super.callPackage ./packages/telescope-fzf-native.nix { src = inputs.telescope-fzf-native; };
-        })
         (import ./packages/sumneko_mac.nix)
         inputs.neovim-nightly-overlay.overlay
         (final: prev: { LS_COLORS = inputs.LS_COLORS; })

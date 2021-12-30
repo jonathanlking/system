@@ -7,7 +7,6 @@
     curl
     exa
     fd # find replacement written in Rust
-    fzf
     gnupg
     gnused
     gnutls
