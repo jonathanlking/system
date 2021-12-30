@@ -5,6 +5,6 @@
     nixpkgs-review
     nix-top
     nixpkgs-fmt
-  ] ++ (lib.optionals (!stdenv.isDarwin) [hydra-check] )
+  ] ++ (lib.optionals (!stdenv.isDarwin) [ hydra-check ])
   ;
 }

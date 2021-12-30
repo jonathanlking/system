@@ -33,13 +33,13 @@
       typescript-vim
       vim-jsx-typescript # Typescript TSX formatting
       vim-strip-trailing-whitespace
-       nvim-lspconfig
-       nvim-compe
+      nvim-lspconfig
+      nvim-compe
 
-       # Telescope
-       popup-nvim
-       plenary-nvim
-       telescope-nvim
+      # Telescope
+      popup-nvim
+      plenary-nvim
+      telescope-nvim
     ];
   };
 
