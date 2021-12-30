@@ -9,6 +9,9 @@ directory.
 
 Run `home-manager/install.sh` to quickly set up a home-manager environment.
 
+On `linux-desktop` I had to run `nix-env --set-flag priority 0 nix` to fix a
+conflict.
+
 This is heavily inspired/copied from:
 * https://github.com/mjlbach/nix-dotfiles
 * https://github.com/mitchellh/nixos-config
