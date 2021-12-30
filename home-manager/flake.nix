@@ -20,8 +20,6 @@
     # Other packages
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     LS_COLORS = {
       url = "github:trapd00r/LS_COLORS";
       flake = false;
@@ -36,13 +34,6 @@
         (final: prev: { LS_COLORS = inputs.LS_COLORS; })
       ];
     in
-    # legacyPackages attribute for declarative channels (used by compat/default.nix)
-    inputs.flake-utils.lib.eachDefaultSystem
-      (system:
-        {
-          legacyPackages = inputs.nixpkgs.legacyPackages.${system};
-        }
-      ) //
     {
       homeConfigurations = {
         macbook-pro = inputs.home-manager.lib.homeManagerConfiguration {
