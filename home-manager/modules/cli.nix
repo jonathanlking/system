@@ -1,6 +1,7 @@
 { config, pkgs, libs, ... }:
 {
   home.packages = with pkgs; [
+    aspell # spell checker
     bat # cat replacement written in Rust
     cachix # Nix build cache
     curl
