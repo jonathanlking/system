@@ -33,23 +33,27 @@
         inputs.neovim-nightly-overlay.overlay
         (final: prev: { LS_COLORS = inputs.LS_COLORS; })
       ];
+
+      defaultConfig = {
+        home.file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
+        nixpkgs.config = import ./configs/nix/config.nix;
+        nixpkgs.overlays = overlays;
+        imports = [
+          ./modules/cli.nix
+          ./modules/home-manager.nix
+          ./modules/neovim.nix
+          ./modules/git.nix
+          ./modules/languages.nix
+          ./modules/nix-utilities.nix
+        ];
+      };
     in
     {
       homeConfigurations = {
         macbook-pro = inputs.home-manager.lib.homeManagerConfiguration {
           configuration = { pkgs, config, ... }:
+            defaultConfig //
             {
-              home.file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
-              nixpkgs.config = import ./configs/nix/config.nix;
-              nixpkgs.overlays = overlays;
-              imports = [
-                ./modules/cli.nix
-                ./modules/home-manager.nix
-                ./modules/neovim.nix
-                ./modules/git.nix
-                ./modules/languages.nix
-                ./modules/nix-utilities.nix
-              ];
               programs.zsh.initExtra = builtins.readFile ./configs/zsh/macbook-pro_zshrc.zsh;
             };
           system = "aarch64-darwin";
@@ -57,7 +61,19 @@
           username = "jonathan";
           stateVersion = "21.11";
         };
+        linux-desktop = inputs.home-manager.lib.homeManagerConfiguration {
+          configuration = { pkgs, ... }:
+            defaultConfig //
+            {
+              programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-desktop_zshrc.zsh;
+            };
+          system = "x86_64-linux";
+          homeDirectory = "/home/jonathan";
+          username = "jonathan";
+          stateVersion = "21.11";
+        };
       };
       macbook-pro = self.homeConfigurations.macbook-pro.activationPackage;
+      linux-desktop = self.homeConfigurations.linux-desktop.activationPackage;
     };
 }
