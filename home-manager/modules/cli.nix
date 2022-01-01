@@ -45,6 +45,8 @@
     initExtra = ''
       # Enable direnv
       emulate zsh -c "$(direnv hook zsh)"
+
+      alias ls=exa
     '';
     sessionVariables = rec {
       EDITOR = "vim";
