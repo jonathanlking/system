@@ -19,11 +19,6 @@
 
     # Other packages
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-    LS_COLORS = {
-      url = "github:trapd00r/LS_COLORS";
-      flake = false;
-    };
   };
 
   outputs = { self, ... }@inputs:
@@ -31,7 +26,6 @@
       overlays = [
         (import ./packages/sumneko_mac.nix)
         inputs.neovim-nightly-overlay.overlay
-        (final: prev: { LS_COLORS = inputs.LS_COLORS; })
       ];
 
       defaultConfig = {
