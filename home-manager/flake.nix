@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     # We have access to unstable nixpkgs if we want specific unstable packages.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -42,6 +44,13 @@
         ];
       };
     in
+    # legacyPackages attribute for declarative channels (used by compat/default.nix)
+    inputs.flake-utils.lib.eachDefaultSystem
+      (system:
+        {
+          legacyPackages = inputs.nixpkgs.legacyPackages.${system};
+        }
+      ) //
     {
       homeConfigurations = {
         macbook-pro = inputs.home-manager.lib.homeManagerConfiguration {
