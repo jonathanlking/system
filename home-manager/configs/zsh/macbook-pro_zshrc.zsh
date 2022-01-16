@@ -1,3 +1,7 @@
+typeset -U path
+path=($HOME/.ghcup/bin
+      $path)
+
 home-upgrade () {
   nix flake update $HOME/system/home-manager
 }
