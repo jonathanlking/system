@@ -5,8 +5,10 @@
     bat # cat replacement written in Rust
     cachix # Nix build cache
     curl
+    duff # better du
     exa
     fd # find replacement written in Rust
+    fx # JSON viewer
     gnupg
     gnused
     gnutls
@@ -39,7 +41,7 @@
     history.extended = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "vi-mode" ];
+      plugins = [ "git" "vi-mode" "bazel" "edit-command-line" ];
       theme = "robbyrussell";
     };
     initExtra = ''

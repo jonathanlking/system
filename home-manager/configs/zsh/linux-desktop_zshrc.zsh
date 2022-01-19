@@ -8,3 +8,6 @@ home-switch () {
 
 # Use keychain to manage ssh keys
 eval $(keychain -q --agents ssh --eval)
+
+zle -N edit-command-line
+bindkey "^e" edit-command-line
