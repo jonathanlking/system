@@ -40,6 +40,7 @@
       popup-nvim
       plenary-nvim
       telescope-nvim
+      telescope-file-browser-nvim
     ];
   };
 

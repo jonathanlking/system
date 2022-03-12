@@ -4,3 +4,4 @@ require('telescope').setup{
     generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
   }
 }
+require("telescope").load_extension "file_browser"
