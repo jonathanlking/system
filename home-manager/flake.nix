@@ -23,10 +23,11 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, nixpkgs-unstable, ... }@inputs:
     let
       overlays = [
         (import ./packages/sumneko_mac.nix)
+        (_: prev: { vimPlugins = nixpkgs-unstable.legacyPackages.${prev.system}.vimPlugins; })
         inputs.neovim-nightly-overlay.overlay
       ];
 
