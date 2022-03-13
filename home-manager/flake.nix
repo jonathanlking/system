@@ -37,6 +37,7 @@
         nixpkgs.overlays = overlays;
         imports = [
           ./modules/cli.nix
+          ./modules/fonts.nix
           ./modules/home-manager.nix
           ./modules/neovim.nix
           ./modules/git.nix
