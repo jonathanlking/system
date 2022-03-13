@@ -19,6 +19,7 @@ opt.inccommand = "nosplit"
 
 local map = vim.api.nvim_set_keymap
 local options = { noremap = true }
+map('n', '<Leader>p', ':Telescope file_browser <CR>', options)
 map('n', '<C-p>', ':Telescope find_files <CR>', options)
 map('n', '<C-l>', ':Telescope git_files <CR>', options)
 map('n', '<C-f>', ':Telescope live_grep <CR>', options)
