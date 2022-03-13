@@ -124,3 +124,11 @@ lspconfig.hls.setup {
         }
     }
 }
+
+local trouble = require("trouble")
+
+trouble.setup {
+}
+
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>Trouble workspace_diagnostics<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})

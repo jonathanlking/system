@@ -35,12 +35,15 @@
       vim-strip-trailing-whitespace
       nvim-lspconfig
       nvim-compe
+      nvim-web-devicons
 
       # Telescope
       popup-nvim
       plenary-nvim
       telescope-nvim
       telescope-file-browser-nvim
+
+      trouble-nvim
     ];
   };
 
