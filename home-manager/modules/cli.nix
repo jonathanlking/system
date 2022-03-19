@@ -6,6 +6,7 @@
     cachix # Nix build cache
     curl
     duff # better du
+    difftastic
     exa
     fd # find replacement written in Rust
     fx # JSON viewer
