@@ -13,6 +13,7 @@
     gnupg
     gnused
     gnutls
+    htop
     jq # JSON parsing for the CLI
     keychain
     lorri # Easy Nix shell
