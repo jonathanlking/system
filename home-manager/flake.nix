@@ -28,6 +28,7 @@
       overlays = [
         (import ./packages/sumneko_mac.nix)
         (_: prev: { vimPlugins = nixpkgs-unstable.legacyPackages.${prev.system}.vimPlugins; })
+        (_: prev: { difftastic = nixpkgs-unstable.legacyPackages.${prev.system}.difftastic; })
         inputs.neovim-nightly-overlay.overlay
       ];
 
