@@ -14,3 +14,9 @@ eval $(keychain -q --agents ssh --eval)
 
 zle -N edit-command-line
 bindkey "^v" edit-command-line
+
+git-sed () {
+  local pattern="$1"; shift
+  local replacement="$1"; shift
+  git grep -z --files-with-matches -i "$pattern" | xargs -0 sed -i -e "s/$pattern/$replacement/g"
+}
