@@ -59,6 +59,12 @@
           configuration = { pkgs, config, ... }:
             defaultConfig //
             {
+              programs.zsh.initExtraFirst = ''
+                # Source nix
+                if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+                   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+                fi
+              '';
               programs.zsh.initExtra = builtins.readFile ./configs/zsh/macbook-pro_zshrc.zsh;
             };
           system = "aarch64-darwin";
