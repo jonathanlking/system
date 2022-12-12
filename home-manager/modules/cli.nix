@@ -16,6 +16,7 @@
     jq # JSON parsing for the CLI
     keychain
     lorri # Easy Nix shell
+    mosh
     nix-zsh-completions
     nmap
     pre-commit
