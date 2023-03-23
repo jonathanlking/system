@@ -3,7 +3,7 @@ local lspconfig = require('lspconfig')
 -- This enables all the language servers I want on my system
 -- Change these to whatever languages you use
 lspconfig.rnix.setup{}
-lspconfig.sumneko_lua.setup{}
+lspconfig.lua_ls.setup{}
 vim.o.completeopt = "menuone,noselect"
 
 -- Autocompletion setup
@@ -53,7 +53,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
         Lua = {
