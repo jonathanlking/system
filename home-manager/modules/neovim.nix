@@ -37,6 +37,8 @@
       nvim-compe
       nvim-web-devicons
 
+      copilot-vim # GitHub copilot
+
       # Telescope
       popup-nvim
       plenary-nvim
