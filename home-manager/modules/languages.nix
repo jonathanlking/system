@@ -1,7 +1,9 @@
 { config, pkgs, libs, ... }:
 {
   home.packages = with pkgs; [
-    # haskellPackages.ghc
+    haskellPackages.ghc
+    nix-diff
+    cabal-install
     # haskellPackages.haskell-language-server
     rnix-lsp
     shellcheck
