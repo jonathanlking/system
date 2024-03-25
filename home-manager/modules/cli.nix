@@ -6,7 +6,7 @@
     cachix # Nix build cache
     curl
     duff # better du
-    exa
+    eza
     fd # find replacement written in Rust
     fx # JSON viewer
     gnupg
@@ -50,7 +50,7 @@
       # Enable direnv
       emulate zsh -c "$(direnv hook zsh)"
 
-      alias ls=exa
+      alias ls=eza
     '';
     sessionVariables = rec {
       EDITOR = "vim";
