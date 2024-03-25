@@ -1,3 +1,7 @@
+# Load bash completion in Zsh
+autoload -Uz bashcompinit
+bashcompinit
+
 home-upgrade () {
   nix flake update $HOME/system/home-manager
 }
