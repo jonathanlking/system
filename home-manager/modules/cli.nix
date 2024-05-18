@@ -43,7 +43,7 @@
     history.extended = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "vi-mode" "bazel" "edit-command-line" ];
+      plugins = [ "git" "vi-mode" "bazel" ];
       theme = "robbyrussell";
     };
     initExtra = ''
