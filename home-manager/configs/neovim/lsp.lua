@@ -2,7 +2,6 @@
 local lspconfig = require('lspconfig')
 -- This enables all the language servers I want on my system
 -- Change these to whatever languages you use
-lspconfig.rnix.setup{}
 lspconfig.lua_ls.setup{}
 vim.o.completeopt = "menuone,noselect"
 
