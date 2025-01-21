@@ -14,6 +14,7 @@
       luafile ~/.config/nvim/config.lua
       luafile ~/.config/nvim/lsp.lua
       luafile ~/.config/nvim/telescope.lua
+      luafile ~/.config/nvim/monorepo.lua
     '';
     plugins = with pkgs.vimPlugins; [
       fzf-vim # file explorer (fuzzer search)
@@ -52,4 +53,5 @@
   home.file.".config/nvim/config.lua".source = ../configs/neovim/config.lua;
   home.file.".config/nvim/lsp.lua".source = ../configs/neovim/lsp.lua;
   home.file.".config/nvim/telescope.lua".source = ../configs/neovim/telescope.lua;
+  home.file.".config/nvim/monorepo.lua".source = ../configs/neovim/monorepo.lua;
 }
