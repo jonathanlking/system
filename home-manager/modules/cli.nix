@@ -39,7 +39,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     history.extended = true;
     oh-my-zsh = {
       enable = true;

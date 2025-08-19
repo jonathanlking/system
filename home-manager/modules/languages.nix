@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     haskellPackages.ghc
+    zlib
     nix-diff
     cabal-install
     # haskellPackages.haskell-language-server

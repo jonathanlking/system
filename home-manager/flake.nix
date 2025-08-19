@@ -5,26 +5,22 @@
     # Pin our primary nixpkgs repository. This is the main nixpkgs repository
     # we'll use for our configurations. Be very careful changing this because
     # it'll impact your entire system.
-    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-25.05";
 
       # We want home-manager to use the same set of nixpkgs as our system.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-utils.url = "github:numtide/flake-utils";
-
-    # We have access to unstable nixpkgs if we want specific unstable packages.
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, ... }@inputs:
     let
       overlays = [
         (import ./packages/sumneko_mac.nix)
-        (_: prev: { vimPlugins = nixpkgs-unstable.legacyPackages.${prev.system}.vimPlugins; })
       ];
 
       defaultConfig = {
@@ -59,7 +55,7 @@
                 file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
                 homeDirectory = "/Users/jonathan";
                 username = "jonathan";
-                stateVersion = "23.11";
+                stateVersion = "25.05";
               };
               programs.zsh.initExtraFirst = ''
                 # Source nix
@@ -80,7 +76,7 @@
                 file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
                 homeDirectory = "/home/jonathan";
                 username = "jonathan";
-                stateVersion = "23.11";
+                stateVersion = "25.05";
               };
               programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-desktop_zshrc.zsh;
             })

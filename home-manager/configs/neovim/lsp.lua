@@ -6,7 +6,7 @@ lspconfig.lua_ls.setup{}
 vim.o.completeopt = "menuone,noselect"
 
 -- Autocompletion setup
-require'compe'.setup {
+require'cmp'.setup {
     enabled = true;
     autocomplete = true;
     debug = false;
@@ -18,7 +18,6 @@ require'compe'.setup {
     max_abbr_width = 100;
     max_kind_width = 100;
     max_menu_width = 100;
-    documentation = false;
     source = {
         path = true;
         buffer = true;

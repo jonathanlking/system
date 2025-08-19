@@ -35,7 +35,7 @@
       vim-jsx-typescript # Typescript TSX formatting
       vim-strip-trailing-whitespace
       nvim-lspconfig
-      nvim-compe
+      nvim-cmp
       nvim-web-devicons
 
       copilot-vim # GitHub copilot
