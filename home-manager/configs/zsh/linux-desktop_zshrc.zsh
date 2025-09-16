@@ -54,3 +54,5 @@ setopt SHARE_HISTORY      # Share history across multiple sessions
 setopt HIST_IGNORE_DUPS   # Don’t record the same command twice in a row
 setopt HIST_IGNORE_ALL_DUPS # Remove older duplicates
 setopt HIST_REDUCE_BLANKS # Remove superfluous blanks
+
+source <(fzf --zsh)
