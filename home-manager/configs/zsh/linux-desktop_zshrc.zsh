@@ -42,3 +42,15 @@ notify () {
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+# Set history sizes
+HISTSIZE=1000000000      # Number of commands kept in memory
+SAVEHIST=1000000000      # Number of commands saved to the history file
+
+# Options to make history behave nicely
+setopt APPEND_HISTORY     # Append history instead of overwriting
+setopt INC_APPEND_HISTORY # Save commands as they are entered
+setopt SHARE_HISTORY      # Share history across multiple sessions
+setopt HIST_IGNORE_DUPS   # Don’t record the same command twice in a row
+setopt HIST_IGNORE_ALL_DUPS # Remove older duplicates
+setopt HIST_REDUCE_BLANKS # Remove superfluous blanks
