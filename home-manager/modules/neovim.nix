@@ -36,6 +36,7 @@
       vim-strip-trailing-whitespace
       nvim-lspconfig
       nvim-cmp
+      nvim-treesitter.withAllGrammars
       nvim-web-devicons
 
       copilot-vim # GitHub copilot
