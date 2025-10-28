@@ -1,8 +1,8 @@
 -- This file sets up autocompletion for neovim's native lsp
 local lspconfig = require('lspconfig')
--- This enables all the language servers I want on my system
--- Change these to whatever languages you use
-lspconfig.lua_ls.setup{}
+
+vim.lsp.enable("ts_ls")
+
 vim.o.completeopt = "menuone,noselect"
 
 -- Autocompletion setup
@@ -130,3 +130,12 @@ trouble.setup {
 
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>Trouble workspace_diagnostics<cr>", {silent = true, noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
+
+local lsp_open_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.util.open_floating_preview = function(contents, format, config)
+  return lsp_open_floating_preview(
+    contents,
+    format,
+    vim.tbl_deep_extend("force", config or {}, { border = "rounded" }))
+end
