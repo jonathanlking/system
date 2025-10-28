@@ -1,6 +1,3 @@
--- This file sets up autocompletion for neovim's native lsp
-local lspconfig = require('lspconfig')
-
 vim.lsp.enable("ts_ls")
 
 vim.o.completeopt = "menuone,noselect"
@@ -51,7 +48,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls', {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
         Lua = {
@@ -71,7 +68,7 @@ lspconfig.lua_ls.setup {
             },
         },
     },
-}
+})
 
 
 -- Use an on_attach function to only map the following keys
@@ -110,10 +107,10 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.hls.setup {
+vim.lsp.config('hls', {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern('BUILD.bazel', '*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml'),
+    root_dir = (require 'lspconfig.util').root_pattern('BUILD.bazel', '*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml'),
     filetypes = { 'hs', 'lhs', 'haskell', 'lhaskell' },
     formattingProvider = "ormolu",
     settings = {
@@ -121,7 +118,7 @@ lspconfig.hls.setup {
             hlintOn = false,
         }
     }
-}
+})
 
 local trouble = require("trouble")
 
