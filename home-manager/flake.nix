@@ -82,8 +82,24 @@
             })
           ];
         };
+        linux-arm-vm = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."aarch64-linux";
+          modules = [
+            (defaultConfig //
+            {
+              home = {
+                file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
+                homeDirectory = "/home/jonathan";
+                username = "jonathan";
+                stateVersion = "25.05";
+              };
+              programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-arm-vm_zshrc.zsh;
+            })
+          ];
+        };
       };
       macbook-pro = self.homeConfigurations.macbook-pro.activationPackage;
       linux-desktop = self.homeConfigurations.linux-desktop.activationPackage;
+      linux-arm-vm = self.homeConfigurations.linux-arm-vm.activationPackage;
     };
 }
