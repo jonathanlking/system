@@ -17,6 +17,7 @@
     keychain
     lorri # Easy Nix shell
     mosh
+    nix-output-monitor
     nix-zsh-completions
     nmap
     pre-commit
