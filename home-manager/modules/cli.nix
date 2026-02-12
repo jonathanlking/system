@@ -47,7 +47,7 @@
       plugins = [ "git" "vi-mode" "bazel" ];
       theme = "robbyrussell";
     };
-    initExtra = ''
+    initContent = ''
       # Enable direnv
       emulate zsh -c "$(direnv hook zsh)"
 

@@ -38,9 +38,9 @@ in {
   home.packages = with pkgs; [
     git
     git-lfs
-    gitAndTools.delta
-    gitAndTools.gh
-    gitAndTools.git-crypt
+    delta
+    gh
+    git-crypt
     pre-commit
     git-clean
   ];

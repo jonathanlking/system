@@ -5,10 +5,10 @@
     # Pin our primary nixpkgs repository. This is the main nixpkgs repository
     # we'll use for our configurations. Be very careful changing this because
     # it'll impact your entire system.
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
 
       # We want home-manager to use the same set of nixpkgs as our system.
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,13 +19,9 @@
 
   outputs = { self, ... }@inputs:
     let
-      overlays = [
-        (import ./packages/sumneko_mac.nix)
-      ];
-
       defaultConfig = {
         nixpkgs.config = import ./configs/nix/config.nix;
-        nixpkgs.overlays = overlays;
+        nixpkgs.overlays = [];
         imports = [
           ./modules/cli.nix
           ./modules/fonts.nix
@@ -55,7 +51,7 @@
                 file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
                 homeDirectory = "/Users/jonathan";
                 username = "jonathan";
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
               programs.zsh.initExtraFirst = ''
                 # Source nix
@@ -63,7 +59,7 @@
                    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
                 fi
               '';
-              programs.zsh.initExtra = builtins.readFile ./configs/zsh/macbook-pro_zshrc.zsh;
+              programs.zsh.initContent = builtins.readFile ./configs/zsh/macbook-pro_zshrc.zsh;
             })
           ];
         };
@@ -76,9 +72,9 @@
                 file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
                 homeDirectory = "/home/jonathan";
                 username = "jonathan";
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
-              programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-desktop_zshrc.zsh;
+              programs.zsh.initContent = builtins.readFile ./configs/zsh/linux-desktop_zshrc.zsh;
             })
           ];
         };
@@ -91,9 +87,9 @@
                 file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
                 homeDirectory = "/home/jonathan";
                 username = "jonathan";
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
-              programs.zsh.initExtra = builtins.readFile ./configs/zsh/linux-arm-vm_zshrc.zsh;
+              programs.zsh.initContent = builtins.readFile ./configs/zsh/linux-arm-vm_zshrc.zsh;
             })
           ];
         };
