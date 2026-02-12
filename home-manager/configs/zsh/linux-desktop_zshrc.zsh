@@ -13,6 +13,8 @@ home-switch () {
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+alias empty-vim='vim -u NONE -U NONE --noplugin'
+
 # Use keychain to manage ssh keys
 eval $(keychain -q --agents ssh --eval)
 
