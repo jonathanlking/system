@@ -35,6 +35,11 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "fd --type f";
+    defaultOptions = [
+    "--height=40%"
+    "--layout=reverse"
+    "--border"
+    ];
   };
 
   programs.zsh = {
