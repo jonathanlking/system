@@ -15,10 +15,18 @@
     };
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
   };
 
   outputs = { self, ... }@inputs:
     let
+      mkPkgs = system: import inputs.nixpkgs {
+        inherit system;
+        config = import ./configs/nix/config.nix;
+        overlays = [ inputs.claude-code-nix.overlays.default ];
+      };
+
       defaultConfig = {
         nixpkgs.config = import ./configs/nix/config.nix;
         nixpkgs.overlays = [];
@@ -43,7 +51,7 @@
     {
       homeConfigurations = {
         macbook-pro = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages."aarch64-darwin";
+          pkgs = mkPkgs "aarch64-darwin";
           modules = [
             (defaultConfig //
             {
@@ -64,7 +72,7 @@
           ];
         };
         linux-desktop = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+          pkgs = mkPkgs "x86_64-linux";
           modules = [
             (defaultConfig //
             {
@@ -79,7 +87,7 @@
           ];
         };
         linux-arm-vm = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages."aarch64-linux";
+          pkgs = mkPkgs "aarch64-linux";
           modules = [
             (defaultConfig //
             {
