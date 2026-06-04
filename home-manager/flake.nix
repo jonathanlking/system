@@ -101,9 +101,35 @@
             })
           ];
         };
+        work-laptop = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs "aarch64-darwin";
+          modules = [
+            (defaultConfig //
+            {
+              home = {
+                file.".config/nix/nix.conf".source = ./configs/nix/nix.conf;
+                file.".gitconfig.user".text = ''
+                  [user]
+                    email = jonathanking@monzo.com
+                '';
+                homeDirectory = "/Users/jonathanking";
+                username = "jonathanking";
+                stateVersion = "25.11";
+              };
+              programs.zsh.initExtraFirst = ''
+                # Source nix
+                if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+                   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+                fi
+              '';
+              programs.zsh.initContent = builtins.readFile ./configs/zsh/work-laptop_zshrc.zsh;
+            })
+          ];
+        };
       };
       macbook-pro = self.homeConfigurations.macbook-pro.activationPackage;
       linux-desktop = self.homeConfigurations.linux-desktop.activationPackage;
       linux-arm-vm = self.homeConfigurations.linux-arm-vm.activationPackage;
+      work-laptop = self.homeConfigurations.work-laptop.activationPackage;
     };
 }

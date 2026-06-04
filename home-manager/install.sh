@@ -23,7 +23,7 @@ main() {
 
   echo "Initialising $machine_name"
   nix build --experimental-features "nix-command flakes" ".#$machine_name"
-  ./result/activate
+  HOME_MANAGER_BACKUP_EXT=backup ./result/activate
 }
 
 main "$@"

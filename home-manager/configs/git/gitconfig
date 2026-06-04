@@ -56,11 +56,11 @@
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
-[include]
-  path = .gitconfig.user
 [user]
   name = Jonathan King
   email = jonathanlking@me.com
+[include]
+  path = .gitconfig.user
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
