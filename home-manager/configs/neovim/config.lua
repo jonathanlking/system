@@ -31,6 +31,11 @@ vim.cmd [[
   set tags+=$MONOREPO/tags;
 ]]
 
+-- Let nvim's built-in LSP own gopls; vim-go keeps its non-LSP features.
+vim.g.go_gopls_enabled = 0
+vim.g.go_def_mapping_enabled = 0
+vim.g.go_code_completion_enabled = 0
+
 
 vim.cmd [[
 

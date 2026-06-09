@@ -33,6 +33,7 @@
       vim-javascript
       typescript-vim
       vim-jsx-typescript # Typescript TSX formatting
+      vim-go # Go support (uses `go`/`gopls` from PATH)
       vim-strip-trailing-whitespace
       nvim-lspconfig
       nvim-cmp

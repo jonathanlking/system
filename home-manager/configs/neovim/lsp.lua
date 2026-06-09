@@ -110,6 +110,15 @@ vim.lsp.config('hls', {
     }
 })
 
+vim.lsp.config('gopls', {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    root_markers = { 'go.work', 'go.mod', '.git' },
+})
+vim.lsp.enable('gopls')
+
 local trouble = require("trouble")
 
 trouble.setup {
